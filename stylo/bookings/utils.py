@@ -20,7 +20,7 @@ def generate_time_slots(stylist, service, date):
 
     if not working_hours:
         return []
-
+    
     start_dt = datetime.combine(date, working_hours.start_time)
     end_dt = datetime.combine(date, working_hours.end_time)
 
