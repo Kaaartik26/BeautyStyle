@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Select a Stylist</h2>
+
+<ul>
+  {% for stylist in stylists %}
+    <li>
+      <a href="/bookings/select-date/?stylist={{ stylist.id }}&service={{ request.resolver_match.kwargs.service_id }}">
+        {{ stylist.name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -3,6 +3,7 @@ from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest
+from django.shortcuts import render
 
 from services.models import Stylist, Service
 from .models import Appointment
@@ -88,3 +89,20 @@ def cancel_appointment(request, appointment_id):
     appointment.save()
 
     return redirect('my_appointments')
+
+def select_date(request):
+    return render(request, 'bookings/select_date.html')
+
+def select_slot(request):
+    stylist = Stylist.objects.get(id=request.GET['stylist'])
+    service = Service.objects.get(id=request.GET['service'])
+    date = datetime.strptime(request.GET['date'], "%Y-%m-%d").date()
+
+    slots = generate_time_slots(stylist, service, date)
+
+    return render(request, 'bookings/select_slot.html', {
+        'slots': slots,
+        'stylist': stylist,
+        'service': service,
+        'date': date
+    })

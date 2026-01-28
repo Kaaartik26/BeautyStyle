@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stylo</title>
+</head>
+<body>
+  {% if user.is_authenticated %}
+    Logged in as {{ user.username }} |
+    <a href="/accounts/logout/">Logout</a>
+  {% endif %}
+  <hr>
+
+  {% block content %}{% endblock %}
+</body>
+</html>

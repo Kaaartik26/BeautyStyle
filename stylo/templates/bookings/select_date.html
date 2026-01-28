@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Select Date</h2>
+
+<form method="get" action="/bookings/select-slot/">
+  <input type="hidden" name="stylist" value="{{ request.GET.stylist }}">
+  <input type="hidden" name="service" value="{{ request.GET.service }}">
+
+  <input type="date" name="date" required>
+  <button type="submit">Check Slots</button>
+</form>
+
+{% endblock %}

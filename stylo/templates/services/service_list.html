@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Select a Service</h2>
+
+<ul>
+  {% for service in services %}
+    <li>
+      <a href="{% url 'stylist_list' service.id %}">
+        {{ service.name }} ({{ service.duration }} mins)
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -5,4 +5,5 @@ urlpatterns = [
     path('create/', views.create_appointment, name='create_appointment'),
     path('my/', views.my_appointments, name='my_appointments'),
     path('cancel/<int:appointment_id>/', views.cancel_appointment, name='cancel_appointment'),
+    path('select-date/', views.select_date, name='select_date'),
 ]
